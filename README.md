@@ -49,6 +49,12 @@ sudo ./src/build/bin/binder_ctl /dev/binderfs/binder-control /dev/binderfs/NAME
 
 Replace NAME as you need.
 
+## 4. Start service manager  
+
+```
+sudo LD_LIBRARY_PATH=./src/build/lib/   src/build/bin/servicemanager /dev/binderfs/NAME
+```
+
 ## Ref:
 
 * https://github.com/jingerppp/binder-for-linux
