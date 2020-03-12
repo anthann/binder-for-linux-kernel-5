@@ -2,7 +2,7 @@ MODULE_PATH_BINDER_CTL = binder-control
 SOURCES_BINDER_CTL := binderfs.c
 OBJS_BINDER_CTL := $(patsubst %.c,$(MODULE_PATH_BINDER_CTL)/%.o, $(SOURCES_BINDER_CTL))
 
-MODULE_BINDER_CTL := binder_ctl
+MODULE_BINDER_CTL := $(MODULE_PATH_BINDER_CTL)/binder_ctl
 CP_BINDER_CTL := cp_binder_ctl
 CLEAN_BINDER_CTL := clean_binder_ctl
 

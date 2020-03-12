@@ -3,7 +3,8 @@
 MODULE_PATH_LUTILS := $(BINDER_ROOT_PATH)/libutils
 
 FLAGS_LUTILS := $(BINDER_FLAGS)
-FLAGS_LUTILS += -Wall -Wextra -Werror -fPIC
+FLAGS_LUTILS += -Wall -Werror -fPIC
+#FLAGS_LUTILS += -Wall -Wextra -Werror -fPIC
 
 INCLUDES_LUTILS := $(INCLUDES)
 INCLUDES_LUTILS += -I $(BINDER_ROOT_PATH)/include
