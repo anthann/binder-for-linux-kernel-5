@@ -1,38 +1,27 @@
-
-# init for servicemanager
 MODULE_PATH_SM := servicemanager
-
-FLAGS_SM := $(CFLAGS)
-FLAGS_SM += -Wall -Wextra -Werror
-
-INCLUDES_SM := $(INCLUDES)
-INCLUDES_SM += -Iinclude
-INCLUDES_SM += -Iliblog/include
-
-SOURCES_SM := binder.c service_manager.c
-OBJS_SM := $(patsubst %.c,$(MODULE_PATH_SM)/%.o, $(SOURCES_SM))
-
-LIBS_SM := -L $(DESTDIR)/lib -llog
-
-MODULE_SM := $(MODULE_PATH_SM)/servicemanager
-CP_SM := cp_sm
+MODULE_SM := $(MODULE_PATH_SM)/service_manager
 CLEAN_SM := clean_sm
+CP_SM := cp_sm
 
 MODULES += $(MODULE_SM)
 MODULES += $(CP_SM)
 CLEANS += $(CLEAN_SM)
 
-# rules for servicemanager
-$(MODULE_SM): $(OBJS_SM)
-	$(CC) $(FLAGS_SM) -o $@ $^ $(LIBS_SM)
+SM_SOURCES := \
+	binder.c \
+	service_manager.c 
 
-$(OBJS_SM): %.o: %.c
-	$(CC) $(FLAGS_SM) $(INCLUDES_SM) -c -o $@ $<
+SM_OBJS := $(patsubst %.c,$(MODULE_PATH_SM)/%.o, $(SM_SOURCES))
+
+$(MODULE_SM): $(SM_OBJS)
+	$(CC) -o $@ $^
 
 $(CLEAN_SM):
-	rm -f $(MODULE_PATH_SM)/*.o
-	rm -f $(MODULE_SM)
+	rm -f $(MODULE_PATH_SM)/*.o 
+
+%.o: %.c
+	$(CC) -I$(INCLUDE_LIB) $(CFLAGS_LIB) -c -o $@ $<
 
 $(CP_SM):
 	mkdir -p $(DESTDIR)/bin
-	cp -f $(MODULE_SM) $(DESTDIR)/bin
+	mv $(MODULE_SM) $(DESTDIR)/bin/

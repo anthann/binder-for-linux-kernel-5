@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <linux/android/binder.h>
+#include <libexplain/ioctl.h>
 #include "binderfs.h"
 //#include <linux/android/binderfs.h>
 
@@ -35,12 +36,19 @@ int main(int argc, char *argv[])
         }
 
         ret = ioctl(fd, BINDER_CTL_ADD, &device);
+        /*
         saved_errno = errno;
         close(fd);
         errno = saved_errno;
+        */
         if (ret < 0) {
+                printf("ret: %d\n", ret);
+                printf("errno: %d\n", errno);
+                printf("%s\n",
+                      explain_errno_ioctl(errno, fd, BINDER_CTL_ADD, &device));
                 printf("%s - Failed to allocate new binder device\n",
                        strerror(errno));
+                close(fd);
                 exit(EXIT_FAILURE);
         }
 

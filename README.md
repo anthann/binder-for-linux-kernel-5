@@ -5,8 +5,8 @@ Prerequisites: Linux kernel version >= 5.0.0
 My envinonment: 
 
 * Ubuntu 18.04.3 LTS
-* gcc-7
-* 5.3.0-40-generic
+* gcc-4.8
+* Kernel version: 5.3.0-40-generic
 
 ## 1. Enable binder driver.
 
@@ -36,7 +36,7 @@ After those steps, two items should appear in /dev:
 ## 2. Build
 
 ```
-sudo apt install linux-headers-xxx
+sudo apt install linux-headers-$(uname -r)
 cd src
 make all
 ```
@@ -44,20 +44,27 @@ make all
 ## 3. Create binder device
 
 ```
-sudo ./src/build/bin/binder_ctl /dev/binderfs/binder-control /dev/binderfs/NAME
+sudo ./src/build/bin/binder_ctl /dev/binderfs/binder-control my-binder
 ```
-
-Replace NAME as you need.
 
 ## 4. Start service manager  
 
 ```
-sudo LD_LIBRARY_PATH=./src/build/lib/   src/build/bin/servicemanager /dev/binderfs/NAME
+sudo ./src/build/bin/service_manager /dev/binderfs/my-binder &
 ```
+
+## 5. Run test
+
+```
+sudo ./src/build/bin/test_server &
+sudo ./src/build/bin/test_client
+```
+
+Should see test_client print messages to stdout.
 
 ## Ref:
 
-* https://github.com/jingerppp/binder-for-linux
+* https://github.com/hungys/binder-for-linux
 * https://brauner.github.io/2019/01/09/android-binderfs.html
 
-Sources may from those links, special thank to them!  
+Sources may from those links, special thank to the author!  
