@@ -60,7 +60,7 @@ sudo ./src/build/bin/test_server &
 sudo ./src/build/bin/test_client
 ```
 
-Should see test_client print messages to stdout.
+Should see test_client prints messages to stdout.
 
 ## Ref:
 

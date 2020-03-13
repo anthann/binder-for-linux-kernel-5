@@ -22,5 +22,5 @@ $(CLEAN_BINDER_CTL):
 
 $(CP_BINDER_CTL):
 	mkdir -p $(DESTDIR)/bin
-	cp -f $(MODULE_BINDER_CTL) $(DESTDIR)/bin/
+	mv $(MODULE_BINDER_CTL) $(DESTDIR)/bin/
 
