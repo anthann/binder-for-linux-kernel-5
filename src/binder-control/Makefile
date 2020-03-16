@@ -11,7 +11,8 @@ MODULES += $(CP_BINDER_CTL)
 CLEANS += $(CLEAN_BINDER_CTL)
 
 $(MODULE_BINDER_CTL): $(OBJS_BINDER_CTL)
-	$(CC) -o $@ $^ -lexplain
+	$(CC) -o $@ $^
+	#$(CC) -o $@ $^ -lexplain
 
 $(OBJS_BINDER_CTL): %.o: %.c
 	$(CC) -c -o $@ $<
