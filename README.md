@@ -50,7 +50,7 @@ sudo ./src/build/bin/binder_ctl /dev/binderfs/binder-control my-binder
 ## 4. Start service manager  
 
 ```
-sudo ./src/build/bin/service_manager /dev/binderfs/my-binder &
+sudo ./src/build/bin/service_manager &
 ```
 
 ## 5. Run test

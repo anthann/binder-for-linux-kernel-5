@@ -17,14 +17,8 @@ class MyBasicService: public BnBasicService {
 
 int main() {
 	sp<IServiceManager> sm = defaultServiceManager();
-    if (sm.get()) {
-        std::cout << "get" << std::endl; 
-    }
 	sm->addService(String16("service.basic"), new MyBasicService());
 	ProcessState::self()->startThreadPool();
 	IPCThreadState::self()->joinThreadPool();
-    while (1) {
-        sleep(1); 
-    }
 	return 0;
 }
