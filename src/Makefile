@@ -1,7 +1,7 @@
 
 # export env for mk.
-CC=gcc-4.8
-CXX=g++-4.8
+CC=gcc-7
+CXX=g++-7
 TOPDIR=.
 
 MODULES=

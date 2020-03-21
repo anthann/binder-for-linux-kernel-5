@@ -5,7 +5,7 @@ Prerequisites: Linux kernel version >= 5.0.0
 My envinonment: 
 
 * Ubuntu 18.04.3 LTS
-* gcc-4.8
+* gcc-7
 * Kernel version: 5.3.0-40-generic
 
 ## 1. Enable binder driver.
