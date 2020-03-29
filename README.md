@@ -37,27 +37,29 @@ After those steps, two items should appear in /dev:
 
 ```
 sudo apt install linux-headers-$(uname -r)
-cd src
-make all
+mkdir build/
+cd build/
+cmake ../src
+make
 ```
 
 ## 3. Create binder device
 
 ```
-sudo ./src/build/bin/binder_ctl /dev/binderfs/binder-control my-binder
+sudo ./binder-control/binder_coutrol /dev/binderfs/binder-control my-binder
 ```
 
 ## 4. Start service manager  
 
 ```
-sudo ./src/build/bin/service_manager &
+sudo ./servicemanager/service_manager &
 ```
 
 ## 5. Run test
 
 ```
-sudo ./src/build/bin/test_server &
-sudo ./src/build/bin/test_client
+sudo ./test_service/test_server &
+sudo ./test_service/test_client
 ```
 
 Should see test_client prints messages to stdout.
