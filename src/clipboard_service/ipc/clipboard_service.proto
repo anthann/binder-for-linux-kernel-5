@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package clipboard_service;
+
+message Empty {
+}
+
+message Data {
+    string text = 1;
+}
+
+message AsyncReq {
+    string str = 1;
+}
+
+message AsyncRsp {
+    string str = 1;
+}
+
+service ClipboardService {
+    rpc setText (Data) returns (Empty) {
+    }
+    rpc getText (Empty) returns (Data) {
+    }
+    rpc ipcAsyncTest(AsyncReq) returns (AsyncRsp) {
+    }
+}
