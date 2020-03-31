@@ -46,7 +46,7 @@ make
 ## 3. Create binder device
 
 ```
-sudo ./binder-control/binder_coutrol /dev/binderfs/binder-control my-binder
+sudo ./binder-control/binder_control /dev/binderfs/binder-control my-binder
 ```
 
 ## 4. Start service manager  

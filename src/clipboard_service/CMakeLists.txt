@@ -8,13 +8,11 @@ add_executable(clipboard_server
     ipc/clipboard_service.pb.cc
     ipc/gen_clipboard_service_comm.cc
     ipc/clipboard_service_svr_impl.cc
-    ipc/gen_clipboard_service_cb.cc
-    utils/err_def.h)
+    ipc/gen_clipboard_service_cb.cc)
 target_link_libraries(clipboard_server binder protobuf)
 
 add_executable(clipboard_client 
     client.cpp 
-    utils/err_def.h
     ipc/clipboard_service.pb.cc
     ipc/gen_clipboard_service_comm.cc
     ipc/gen_clipboard_service_cb.cc
