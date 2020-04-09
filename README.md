@@ -52,14 +52,14 @@ sudo ./binder-control/binder_control /dev/binderfs/binder-control my-binder
 ## 4. Start service manager  
 
 ```
-sudo ./servicemanager/service_manager &
+./servicemanager/service_manager &
 ```
 
 ## 5. Run test
 
 ```
-sudo ./test_service/test_server &
-sudo ./test_service/test_client
+./test_service/test_server &
+./test_service/test_client
 ```
 
 Should see test_client prints messages to stdout.
