@@ -20,16 +20,20 @@ void LoginInterfaceImpl::setCallback(const android::sp<ICallbackInterface>& call
 }
 
 void LoginInterfaceImpl::login() {
-    sleep(1);
-    if (_callback.get()) {
-        _callback->OnGetQrcode("qrcode://ababab");
-    }
-    sleep(2);
-    if (_callback.get()) {
-        _callback->OnLoginStateChange(1, "scanned");
-    }
-    sleep(2);
-    if (_callback.get()) {
-        _callback->OnLoginStateChange(2, "logined");
-    }
+    std::thread t([&] {
+        sleep(1);
+        if (_callback.get()) {
+            _callback->OnGetQrcode("qrcode://ababab");
+        }
+        sleep(2);
+        if (_callback.get()) {
+            _callback->OnLoginStateChange(1, "scanned");
+        }
+        sleep(2);
+        if (_callback.get()) {
+            _callback->OnLoginStateChange(2, "logined");
+        }
+    });
+    t.detach();
+    
 }
